@@ -34,10 +34,10 @@ class TypeRegistryImpl implements TypeRegistry {
       if (typeId < 0 || typeId > 223) {
         throw HiveError('TypeId $typeId not allowed.');
       }
-      typeId = typeId + reservedTypeIds;
+      var typeId = typeId + reservedTypeIds;
 
       if (findAdapterForTypeId(typeId) != null) {
-        throw HiveError('There is already a TypeAdapter for typeId $typeId.');
+        throw HiveError('There is already a TypeAdapter for typeId ${typeId-reservedTypeIds}.');
       }
     }
 
